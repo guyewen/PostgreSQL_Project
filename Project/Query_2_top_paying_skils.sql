@@ -29,7 +29,7 @@ SELECT
         job_skills.skill_type
 FROM
     top_10_data_analyst_jobs
-LEFT JOIN (
+INNER JOIN (
     SELECT
         skills_job_dim.job_id AS job_id,
         skills_job_dim.skill_id AS skill_id,
@@ -41,16 +41,3 @@ LEFT JOIN (
         skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
 ) AS job_skills ON top_10_data_analyst_jobs.job_id = job_skills.job_id
 ;
-
-/*
-SELECT
-    skills_job_dim.job_id,
-    skills_job_dim.skill_id,
-    skills_dim.skills,
-    skills_dim.type
-FROM
-    skills_job_dim
-INNER JOIN
-    skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
-LIMIT 200
-*/
